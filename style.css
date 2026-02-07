@@ -1,0 +1,287 @@
+/* Basic page reset and font */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Add gradient background to the entire page */
+html {
+  /* Light blue gradient that fits the Intel theme */
+  background: linear-gradient(180deg, #accef1 0%, #e8f0f7 100%);
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #333;
+  /* Make sure body background is transparent to show html gradient */
+  background: transparent;
+  /* Add a subtle blue gradient background */
+  background: linear-gradient(180deg, #f0f4f8 0%, #e8f0f7 100%);
+  /* Make sure the background covers the full page */
+  min-height: 100vh;
+}
+
+/* Header / Hero Section Styles */
+header {
+  /* Intel blue gradient background - darker blue on top, lighter on bottom */
+  background: linear-gradient(180deg, rgba(0, 84, 166, 0.85) 0%, rgba(0, 113, 197, 0.85) 100%),
+              url('img/intel-hero-img.jpg');
+  /* Make the background image cover the entire header */
+  background-size: cover;
+  /* Center the background image */
+  background-position: center;
+  /* Don't repeat the background image */
+  background-repeat: no-repeat;
+  color: white;
+  /* Center the content */
+  text-align: center;
+  /* Add spacing inside the header */
+  padding: 60px 20px;
+}
+
+/* Center the content div inside header */
+header div {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Intel logo sizing */
+header img {
+  /* Make the logo smaller and manageable */
+  width: 150px;
+  height: auto;
+  /* Add space below the logo */
+  margin-bottom: 30px;
+}
+
+/* Main heading style */
+header h1 {
+  /* Make the heading large and bold */
+  font-size: 48px;
+  font-weight: bold;
+  /* Add space below the heading */
+  margin-bottom: 20px;
+  /* Make text easier to read */
+  line-height: 1.2;
+}
+
+/* Subheading / description style */
+header p {
+  /* Make the text slightly larger */
+  font-size: 18px;
+  /* Add space between lines for readability */
+  line-height: 1.6;
+  /* Make the text slightly transparent for visual hierarchy */
+  opacity: 0.95;
+  /* Limit width for better readability */
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Timeline Section - Horizontal Scrolling */
+.timeline {
+  /* Allow horizontal scrolling when content overflows */
+  overflow-x: auto;
+  /* Hide the scrollbar but keep scrolling functional */
+  scrollbar-width: none;
+  /* Hide scrollbar for Chrome, Safari, and Edge */
+  -ms-overflow-style: none;
+  /* Add padding around the timeline - extra padding on top */
+  padding: 60px 20px 40px 20px;
+  /* Make cards appear side by side */
+  display: flex;
+  /* Add space between cards */
+  gap: 30px;
+  /* Light blue gradient that blends with page background */
+  background: linear-gradient(180deg, #f0f4f8 0%, #e8f0f7 100%);
+  /* Limit width to show 4 cards at a time */
+  /* 4 cards × 300px width + 3 gaps × 30px + padding 40px */
+  max-width: 1300px;
+  /* Center the timeline container */
+  margin: 0 auto;
+  /* Snap cards as you scroll horizontally */
+  scroll-snap-type: x mandatory;
+  /* Smooth scrolling for nicer snapping */
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar for Chrome, Safari, and Edge */
+.timeline::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual Timeline Cards */
+.card {
+  /* Prevent cards from shrinking */
+  flex-shrink: 0;
+  /* Set a fixed width for each card */
+  width: 300px;
+  /* Set a fixed height for the card */
+  height: 375px;
+  /* Add white background */
+  background-color: white;
+  /* Remove padding - we'll add it to content instead */
+  padding: 0;
+  /* Round the corners */
+  border-radius: 8px;
+  /* Add a subtle shadow */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  /* Make the card relative for positioning the overlay */
+  position: relative;
+  /* Add smooth transition for hover effects */
+  transition: transform 0.3s ease;
+  /* Hide anything that goes outside the card */
+  overflow: hidden;
+  /* Snap each card to the start */
+  scroll-snap-align: start;
+}
+
+/* Card hover effect - slightly lift the card */
+.card:hover {
+  /* Lift and scale the card a bit */
+  transform: translateY(-5px) scale(1.02);
+  /* Make the shadow stronger */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Year heading in cards */
+.card h2 {
+  /* Intel blue color for the year */
+  color: #0071c5;
+  /* Make it larger */
+  font-size: 32px;
+  /* Add space below */
+  margin-bottom: 10px;
+  /* Position on top of the image */
+  position: relative;
+  /* Put it above the image */
+  z-index: 5;
+  /* Add padding to the sides and top */
+  padding: 20px 20px 0 20px;
+}
+
+/* Event title in cards */
+.card h3 {
+  /* Dark color for the title */
+  color: #333;
+  /* Make it medium-sized */
+  font-size: 20px;
+  /* Add space below */
+  margin-bottom: 0;
+  /* Position on top of the image */
+  position: relative;
+  /* Put it above the image */
+  z-index: 5;
+  /* Add padding to the sides and bottom */
+  padding: 0 20px 20px 20px;
+}
+
+/* Card images */
+.card img {
+  /* Make the image fill the card width */
+  width: 100%;
+  /* Calculate the remaining height after h2 and h3 */
+  height: calc(100% - 120px);
+  /* Make the image cover the available space */
+  object-fit: cover;
+  /* Remove border radius - card has it */
+  border-radius: 0;
+  /* Remove space below the image */
+  margin-bottom: 0;
+  /* Position normally in the flow */
+  position: relative;
+  /* Put it behind the overlay */
+  z-index: 1;
+  display: block;
+}
+
+/* Text overlay - hidden by default */
+.card p {
+  /* White color for text */
+  color: white;
+  /* Medium font size */
+  font-size: 16px;
+  /* Add space between lines */
+  line-height: 1.6;
+  /* Position the text as an overlay */
+  position: absolute;
+  /* Start from the top */
+  top: 0;
+  /* Start from the left */
+  left: 0;
+  /* Fill the full width */
+  width: 100%;
+  /* Fill the full height */
+  height: 100%;
+  /* Add padding inside the overlay for text spacing */
+  padding: 30px;
+  /* Add a semi-transparent dark background */
+  background-color: rgba(0, 84, 166, 0.95);
+  /* Hide the text initially */
+  opacity: 0;
+  /* Add smooth transition when appearing */
+  transition: opacity 0.3s ease;
+  /* Put the overlay above the image */
+  z-index: 10;
+  /* Make text appear in the middle vertically */
+  display: flex;
+  /* Align text to center */
+  align-items: center;
+  /* Center text horizontally */
+  justify-content: center;
+  /* Round the corners to match the card */
+  border-radius: 8px;
+}
+
+/* Show text overlay when hovering over the card */
+.card:hover p {
+  /* Make the overlay visible on hover */
+  opacity: 1;
+}
+
+/* Timeline hint text below the scrollable section */
+.timeline-hint {
+  /* Align with timeline container */
+  max-width: 1330px;
+  /* Center the container */
+  margin: 0 auto;
+  /* Add padding on sides and bottom */
+  padding: 20px 20px 40px 20px;
+  /* Gray text color */
+  color: #666;
+  /* Medium font size */
+  font-size: 16px;
+  /* Center the text within the container */
+  text-align: center;
+}
+
+/* Media query for small screens */
+@media (max-width: 768px) {
+  /* Stack timeline cards vertically */
+  .timeline {
+    /* Change to vertical layout */
+    flex-direction: column;
+    /* Allow vertical scroll on small screens */
+    overflow-x: hidden;
+    /* Keep spacing simple */
+    gap: 20px;
+  }
+
+  /* Make each card fill the available width */
+  .card {
+    width: 100%;
+    /* Let the height adjust to content */
+    height: auto;
+  }
+
+  /* Make images fit the card width */
+  .card img {
+    height: auto;
+  }
+
+  /* Hide the hint text on small screens */
+  .timeline-hint {
+    display: none;
+  }
+}
