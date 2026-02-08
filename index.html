@@ -297,11 +297,15 @@
     // List of common RTL language codes
     const rtlLangs = ["ar", "he", "fa", "ur", "ps", "dv", "ku", "yi"];
 
-    // Apply RTL if the language is in the list
+    // Apply RTL only when the desired direction changes
     function updateDirection() {
       const lang = (document.documentElement.lang || "").toLowerCase();
       const isRtl = rtlLangs.some(code => lang.startsWith(code));
-      document.documentElement.dir = isRtl ? "rtl" : "ltr";
+      const desiredDir = isRtl ? "rtl" : "ltr";
+
+      if (document.documentElement.dir !== desiredDir) {
+        document.documentElement.dir = desiredDir;
+      }
     }
 
     // Run once on load
@@ -311,7 +315,7 @@
     const observer = new MutationObserver(updateDirection);
     observer.observe(document.documentElement, {
       attributes: true,
-      attributeFilter: ["lang", "dir"]
+      attributeFilter: ["lang"]
     });
 
     // Simple modal message for the subscribe form
