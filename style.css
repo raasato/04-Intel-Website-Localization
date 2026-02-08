@@ -20,6 +20,8 @@ body {
   background: linear-gradient(180deg, #f0f4f8 0%, #e8f0f7 100%);
   /* Make sure the background covers the full page */
   min-height: 100vh;
+  /* Ensure all text flows right-to-left */
+  direction: rtl;
 }
 
 /* Header / Hero Section Styles */
@@ -254,6 +256,38 @@ header p {
   font-size: 16px;
   /* Center the text within the container */
   text-align: center;
+}
+
+/* Learn More button styling */
+.learn-more {
+  /* White background by default */
+  background-color: #fff;
+  /* Intel blue text for contrast */
+  color: #0071c5;
+  /* Blue border to match theme */
+  border: 2px solid #0071c5;
+  /* Button-like padding */
+  padding: 8px 18px;
+  /* Slightly rounded corners */
+  border-radius: 6px;
+  /* Remove default underline */
+  text-decoration: none;
+  /* Make it feel like a button */
+  display: inline-block;
+  font-weight: 600;
+  cursor: pointer;
+  /* Smooth hover */
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+/* Hover effect for interactivity */
+.learn-more:hover {
+  /* Blue background on hover */
+  background-color: #0071c5;
+  /* White text for contrast */
+  color: #fff;
+  /* Subtle lift on hover */
+  transform: translateY(-2px);
 }
 
 /* Media query for small screens */

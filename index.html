@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Intel: Sustainability Through the Ages</title>
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.rtl.min.css" integrity="sha384-CfCrinSRH2IR6a4e6fy2q6ioOX7O6Mtm1L9vRvFZ1trBncWmMePhzvafv7oIcWiW" crossorigin="anonymous">
+  <!-- Google Fonts Icons (Material Symbols) -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
 
@@ -148,5 +151,103 @@
     </div>
   </section>
   <p class="timeline-hint">Scroll to view timeline | Hover over cards to learn more!</p>
+
+  <!-- 3-Column Content Section -->
+  <section class="container my-5">
+    <!-- .row makes a single row for the columns -->
+    <div class="row text-center">
+      
+      <!-- Column 1 -->
+      <div class="col-12 col-md-4 mb-4">
+        <!-- Icon that matches "RISE Strategy" -->
+        <span class="material-symbols-outlined" aria-hidden="true">strategy</span>
+        <h2>RISE Strategy</h2>
+        <p>
+          Under its RISE (Responsible, Inclusive, Sustainable, Enabling) strategy, 
+          Intel sets ambitious 2030 goals, including driving industry-wide 
+          progress on climate action, water stewardship, and waste reduction.
+        </p>
+        <!-- Learn More Button -->
+        <a href="#" class="learn-more">Learn More</a>
+      </div>
+
+      <!-- Column 2 -->
+      <div class="col-12 col-md-4 mb-4">
+        <!-- Icon that matches "Commitment" -->
+        <span class="material-symbols-outlined" aria-hidden="true">verified</span>
+        <h2>Commitment</h2>
+        <p>
+          In 2022, Intel pledged to achieve net-zero greenhouse gas emissions 
+          (Scope 1 and 2) by 2040. This commitment builds on decades of 
+          environmental initiatives and partnerships across the semiconductor 
+          industry.
+        </p>
+        <!-- Learn More Button -->
+        <a href="#" class="learn-more">Learn More</a>
+      </div>
+
+      <!-- Column 3 -->
+      <div class="col-12 col-md-4 mb-4">
+        <!-- Icon that matches "Water & Waste" -->
+        <span class="material-symbols-outlined" aria-hidden="true">water_drop</span>
+        <h2>Water &amp; Waste</h2>
+        <p>
+          Intel conserves billions of gallons of water annually and 
+          collaborates with local communities to restore watersheds.
+          Intel also upcycles and recycles materials to reduce waste and 
+          advance a circular economy.
+        </p>
+        <!-- Learn More Button -->
+        <a href="#" class="learn-more">Learn More</a>
+      </div>
+
+    </div>
+  </section>
+  
+  <!-- Subscription Form -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4">Subscribe to Intel's Sustainability Newsletter</h2>
+
+    <!-- Simple Bootstrap form -->
+    <form class="mx-auto" style="max-width: 500px;">
+      <!-- Email field -->
+      <div class="mb-3">
+        <label for="newsletterEmail" class="form-label">Email address</label>
+        <input type="email" class="form-control" id="newsletterEmail" placeholder="name@example.com" required>
+      </div>
+
+      <!-- Optional name field -->
+      <div class="mb-3">
+        <label for="newsletterName" class="form-label">Full name</label>
+        <input type="text" class="form-control" id="newsletterName" placeholder="Your name">
+      </div>
+
+      <!-- Submit button -->
+      <button type="submit" class="btn btn-primary w-100">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- Detect language changes and toggle RTL -->
+  <script>
+    // List of common RTL language codes
+    const rtlLangs = ["ar", "he", "fa", "ur", "ps", "dv", "ku", "yi"];
+
+    // Apply RTL if the language is in the list
+    function updateDirection() {
+      const lang = (document.documentElement.lang || "").toLowerCase();
+      const isRtl = rtlLangs.some(code => lang.startsWith(code));
+      document.documentElement.dir = isRtl ? "rtl" : "ltr";
+    }
+
+    // Run once on load
+    updateDirection();
+
+    // Watch for language changes (e.g., Google Translate)
+    const observer = new MutationObserver(updateDirection);
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ["lang", "dir"]
+    });
+  </script>
 </body>
 </html>
